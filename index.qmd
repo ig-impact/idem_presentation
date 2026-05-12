@@ -8,8 +8,8 @@ filters:
 
 extensions:
   gitlink:
-    platform: github               
-    repository-name: impact-initiatives/idem    
+    platform: github
+    repository-name: impact-initiatives/idem
 title-slide-attributes:
   data-background-image: assets/images/title_background.png
   data-background-size: cover
@@ -17,7 +17,7 @@ title-slide-attributes:
   data-background-color: "#ffffff"
 ---
 
-```{r setup} 
+```{r setup}
 library(idem)
 library(gt)
 library(ggplot2)
@@ -46,15 +46,15 @@ The main goal is to catch drift in:
 
 * question names
 * choice lists
-* answer options 
+* answer options
 
-::: 
+:::
 :::
 
 
 :::
 
-## A note on terminology 
+## A note on terminology
 
 
 ::: r-fit-text
@@ -133,7 +133,7 @@ Every choice list referenced by template’s survey questions must also be refer
 using `r packageVersion("idem")[1]`
 :::
 
-```{r, echo=T} 
+```{r, echo=T}
 library(idem)
 ```
 
@@ -163,4 +163,3 @@ library(idem)
 ## final
 
 ![](assets/diagrams/check4.svg)
-
