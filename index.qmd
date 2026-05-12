@@ -88,7 +88,7 @@ Every question name in the template must exist in country form
 
 
 :::  {.column width="75%"}
-![](assets/diagrams/check1.svg){fig-align="center" height="100%" top="200px"}
+![](assets/diagrams/check1.svg){fig-align="center" style="height: 60vh;"}
 :::
 
 :::
@@ -104,7 +104,7 @@ Every choice list defined in the templates’s choices sheet must also be define
 
 
 :::  {.column width="65%"}
-![](assets/diagrams/check2.svg){fig-align="center"}
+![](assets/diagrams/check2.svg){fig-align="center" style="height: 60vh;"}
 :::
 
 :::
@@ -119,12 +119,31 @@ Every choice list referenced by template’s survey questions must also be refer
 :::
 
 
-:::  {.column width="50%"}
-![](assets/diagrams/check4.svg){fig-align="right" height="20%"}
-:::
+:::  {.column width="65%"}
+
+![](assets/diagrams/check3.svg){fig-align="center" style="height: 60vh;"}
 
 :::
 
+:::
+
+## Compliance (4/4)
+
+
+::: columns
+
+:::  {.column width="35%"}
+For every shared list, every choice option in template must exist in the same list in country form.
+:::
+
+
+:::  {.column width="65%"}
+
+![](assets/diagrams/check4.svg){fig-align="center" style="height: 60vh;"}
+
+:::
+
+:::
 
 
 ## Demo time
@@ -133,33 +152,17 @@ Every choice list referenced by template’s survey questions must also be refer
 using `r packageVersion("idem")[1]`
 :::
 
+
+::: fragment
 ```{r, echo=T}
 library(idem)
+
+# load both forms
+target <- msna_template_required
+dev <- msna_template_required
+
+# run all checks
+issues <- validate_xlsform(target = target, dev = dev)
+issues
 ```
-
-
-
-
-4 simple checks:
-
-* For every shared list, every choice option in template must exist in the same list in country form.
-
-## {idem} design ideas
-
-
-## final
-
-
-
-## final
-
-![](assets/diagrams/check2.svg)
-
-
-## final
-
-![](assets/diagrams/check3.svg)
-
-## final
-
-![](assets/diagrams/check4.svg)
+:::
