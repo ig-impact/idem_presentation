@@ -1,0 +1,7 @@
+project:
+  title: "MSNA compliance checking with {idem}"
+
+format:
+  revealjs:
+    incremental: true
+    css: assets/css/custom.css

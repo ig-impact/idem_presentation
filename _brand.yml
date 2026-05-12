@@ -1,0 +1,36 @@
+meta:
+  name: IMPACT Initiatives
+  links:
+    home: https://www.impact-initiatives.org
+
+logo:
+  images:
+    wide-white: assets/logos/IMPACT_Logo_TransparentBackground_WH.png
+    wide-white2: assets/logos/IMPACT_Logo_TransparentBackground_WH2.png
+  small: wide-white
+  medium: wide-white
+  large: wide-white
+
+color:
+  palette:
+    black: "#000000"
+    blue: "#315975"
+    white: "#FFFFFF"
+    gray: "#58585A"
+  primary: black
+  secondary: blue
+  light: white
+  dark: gray
+
+typography:
+  fonts:
+    - family: Source Sans Pro
+      source: google
+  base:
+    family: Source Sans Pro
+    line-height: 1.6
+  headings:
+    family: Source Sans Pro
+    weight: 700
+  link:
+    color: red

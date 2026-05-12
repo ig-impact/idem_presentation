@@ -1,0 +1,13 @@
+.reveal .title {
+  color: #315975;
+}
+
+.reveal h2::before {
+  content: "";
+  display: inline-block;
+  width: 12px;
+  height: 0.85em;
+  background-color: #315975;
+  margin-right: 0.4em;
+  vertical-align: middle;
+}
