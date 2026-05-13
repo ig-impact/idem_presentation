@@ -1,5 +1,6 @@
 project:
   title: "MSNA compliance checking with {idem}"
+  output-dir: _site
 
 format:
   revealjs:
