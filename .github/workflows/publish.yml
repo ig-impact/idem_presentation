@@ -28,6 +28,9 @@ jobs:
       - name: Render slides
         run: quarto render
 
+      - name: Copy presenter slides into output dir
+        run: cp index-speaker.html _site/index-speaker.html
+
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v4
         with:
