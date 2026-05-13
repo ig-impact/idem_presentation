@@ -17,7 +17,9 @@ title-slide-attributes:
   data-background-color: "#ffffff"
 ---
 
-```{r setup}
+```{r}
+#| label: setup
+
 library(idem)
 library(gt)
 library(ggplot2)
@@ -25,126 +27,120 @@ library(ggplot2)
 
 ## {idem} ?
 
-
 ::: columns
 
-::: {.column width="25%"}
-::: fragment
+::::: {.column width="25%"}
+::::::: fragment
 ![](assets/logos/idem.svg)
-:::
-:::
+:::::::
+:::::
 
-::: {.column width="75%"}
-::: fragment
+::::: {.column width="75%"}
+::::::: fragment
+{idem} helps you validate XLSForm files against a reference form: the MSNA
+template.
 
-{idem} helps you validate XLSForm files against a reference form: the MSNA template.
-
-::: fragment
+::::::::: fragment
 The main goal is to catch drift in:
-:::
+:::::::::
 
 
-* question names
-* choice lists
-* answer options
+- question names
+- choice lists
+- answer options
 
-:::
-:::
-
-
-:::
-
-## A note on terminology
+:::::::
+:::::
 
 
-::: r-fit-text
- **target**: HQ approved MSNA template
 :::
 
 ## A note on terminology
 
 ::: r-fit-text
- **dev**: a *development* form version, that's based on the **target**
+**target**: HQ approved MSNA template
+:::
+
+## A note on terminology
+
+::: r-fit-text
+**dev**: a *development* form version, that's based on the **target**
 :::
 
 ## MSNA form validation
 
-
 For a form to be validated it has to be:
 
-* **valid**: no errors or warnings upon uploading to the Kobotoolbox server
-* **compliant**: based on the HQ template
-* [approved by RSU]{.rn-fragment rn-type=underline rn-color=red}
-
+- **valid**: no errors or warnings upon uploading to the Kobotoolbox server
+- **compliant**: based on the HQ template
+- [approved by RSU]{.rn-fragment rn-type=underline rn-color=red}
 
 ## Compliance (1/4)
 
-
 ::: columns
 
-:::  {.column width="25%"}
+::::: {.column width="25%"}
 Every question name in the template must exist in country form
-:::
+:::::
 
 
-:::  {.column width="75%"}
+::::: {.column width="75%"}
 ![](assets/diagrams/check1.svg){fig-align="center" style="height: 60vh;"}
-:::
+:::::
 
 :::
 
 ## Compliance (2/4)
 
-
 ::: columns
 
-:::  {.column width="35%"}
-Every choice list defined in the templates’s choices sheet must also be defined in country form’s choices sheet.
-:::
+::::: {.column width="35%"}
+Every choice list defined in the templates's choices sheet must also be defined
+in country form's choices sheet.
+:::::
 
 
-:::  {.column width="65%"}
+::::: {.column width="65%"}
 ![](assets/diagrams/check2.svg){fig-align="center" style="height: 60vh;"}
-:::
+:::::
 
 :::
 
 ## Compliance (3/4)
 
-
 ::: columns
 
-:::  {.column width="35%"}
-Every choice list referenced by template’s survey questions must also be referenced in country form’s survey questions.
-:::
+::::: {.column width="35%"}
+Every choice list referenced by template's survey questions must also be
+referenced in country form's survey questions.
+:::::
 
 
-:::  {.column width="65%"}
+::::: {.column width="65%"}
 
 ![](assets/diagrams/check3.svg){fig-align="center" style="height: 60vh;"}
 
-:::
+:::::
 
 :::
 
 ## Compliance (4/4)
 
-
 ::: columns
 
-:::  {.column width="35%"}
-For every shared list, every choice option in template must exist in the same list in country form.
-:::
+::::: {.column width="35%"}
+For every shared list, every choice option in template must exist in the same
+list in country form.
+:::::
 
 
-:::  {.column width="65%"}
+::::: {.column width="65%"}
 
 ![](assets/diagrams/check4.svg){fig-align="center" style="height: 60vh;"}
 
-:::
+:::::
 
 :::
-
 
 ## Demo time
 
@@ -152,9 +148,10 @@ For every shared list, every choice option in template must exist in the same li
 using `r packageVersion("idem")[1]`
 :::
 
-
 ::: fragment
-```{r, echo=T}
+```{r}
+#| echo: t
+
 library(idem)
 
 # load both forms
