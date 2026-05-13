@@ -19,3 +19,11 @@ repos:
     hooks:
       - id: codespell
         args: [--skip=renv.lock]
+
+  -   repo: local
+      hooks:
+      -   id: panache
+          name: panache
+          entry: panache format
+          language: unsupported
+          files: 'index.qmd'
