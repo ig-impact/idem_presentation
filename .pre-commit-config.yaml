@@ -27,3 +27,11 @@ repos:
           entry: panache format
           language: unsupported
           files: 'index.qmd'
+
+  -   repo: local
+      hooks:
+      -   id: styler
+          name: styler
+          entry: arf -e "styler::style_dir('.')"
+          language: unsupported
+          files: 'index.qmd'
