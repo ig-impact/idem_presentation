@@ -329,6 +329,55 @@ Iyed Ghedamsi
 </div>
 </div>
 </div>
+</section>
+<section id="reading-your-local-xlsform" class="slide level2">
+<h2>Reading your local xlsform</h2>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href=""></a>form_path <span class="ot">&lt;-</span> <span class="fu">system.file</span>(<span class="st">"extdata/form.xlsx"</span>, <span class="at">package =</span> <span class="st">"idem"</span>)</span>
+<span id="cb3-2"><a href=""></a><span class="fu">read_xlsform</span>(form_path)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output-display">
+<pre><span style="color: #0000BB;"><xlsform></xlsform></span>
+<span style="color: #0000BB;">/home/runner/work/_temp/renv/cache/v5/linux-ubuntu-noble/R-4.5/x86_64-pc-linux-gnu/idem/2026.5.6/9888548d3eda41d2b578740fe64975cd/idem/extdata/form.xlsx</span>
+• <span style="color: #00BB00;">survey</span>: 717 rows
+• <span style="color: #00BB00;">choices</span>: 3714 rows</pre>
+</div>
+</div>
+</section>
+<section id="performing-checks-14" class="slide level2">
+<h2>Performing checks (1/4)</h2>
+</section>
+<section id="validating-question-names-validate_question_names" class="slide level2">
+<h2>Validating question names: <code>validate_question_names()</code></h2>
+<div class="columns">
+<div class="column" style="width:25%;">
+<div class="fragment">
+<p>We explore how this check handles having extra questions in the <code>dev</code> for</p>
+</div>
+</div><div class="column" style="width:75%;">
+<div class="fragment">
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href=""></a>target <span class="ot">&lt;-</span> msna_template_required</span>
+<span id="cb4-2"><a href=""></a><span class="co"># Extra question</span></span>
+<span id="cb4-3"><a href=""></a>dev_extra_q <span class="ot">&lt;-</span> target<span class="sc">$</span>survey[<span class="dv">1</span>L, ]</span>
+<span id="cb4-4"><a href=""></a>dev_extra_q<span class="sc">$</span>name <span class="ot">&lt;-</span> <span class="st">"dev_only_question"</span></span>
+<span id="cb4-5"><a href=""></a><span class="co"># Build xlsform</span></span>
+<span id="cb4-6"><a href=""></a>dev_with_extra_q <span class="ot">&lt;-</span> <span class="fu">xlsform</span>(</span>
+<span id="cb4-7"><a href=""></a>  <span class="at">survey  =</span> <span class="fu">rbind</span>(target<span class="sc">$</span>survey, dev_extra_q),</span>
+<span id="cb4-8"><a href=""></a>  <span class="at">choices =</span> target<span class="sc">$</span>choices</span>
+<span id="cb4-9"><a href=""></a>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+</div>
+<div class="fragment">
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href=""></a><span class="fu">validate_question_names</span>(target, dev_with_extra_q)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 0 × 5
+# ℹ 5 variables: check &lt;chr&gt;, severity &lt;chr&gt;, name &lt;chr&gt;, list_name &lt;chr&gt;,
+#   detail &lt;chr&gt;</code></pre>
+</div>
+</div>
+</div>
+</div></div>
 
 </section>
     </div>
@@ -346,6 +395,8 @@ Iyed Ghedamsi
   <script src="index_files/libs/revealjs/plugin/pdf-export/pdfexport.js"></script>
   <script src="index_files/libs/revealjs/plugin/reveal-menu/menu.js"></script>
   <script src="index_files/libs/revealjs/plugin/reveal-menu/quarto-menu.js"></script>
+  <script src="index_files/libs/revealjs/plugin/multiplex/socket.io.js"></script>
+  <script src="index_files/libs/revealjs/plugin/multiplex/multiplex.js"></script>
   <script src="index_files/libs/revealjs/plugin/quarto-support/support.js"></script>
   
 
@@ -368,6 +419,7 @@ Iyed Ghedamsi
 'autoAnimateUnmatched': true,
 'jumpToSlide': true,
 'menu': {"side":"left","useTextContentForMissingTitles":true,"markers":false,"loadIcons":false,"custom":[{"title":"Tools","icon":"<i class=\"fas fa-gear\"></i>","content":"<ul class=\"slide-menu-items\">\n<li class=\"slide-tool-item active\" data-item=\"0\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.fullscreen(event)\"><kbd>f</kbd> Fullscreen</a></li>\n<li class=\"slide-tool-item\" data-item=\"1\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.speakerMode(event)\"><kbd>s</kbd> Speaker View</a></li>\n<li class=\"slide-tool-item\" data-item=\"2\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.overview(event)\"><kbd>o</kbd> Slide Overview</a></li>\n<li class=\"slide-tool-item\" data-item=\"3\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.togglePdfExport(event)\"><kbd>e</kbd> PDF Export Mode</a></li>\n<li class=\"slide-tool-item\" data-item=\"4\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.toggleScrollView(event)\"><kbd>r</kbd> Scroll View Mode</a></li>\n<li class=\"slide-tool-item\" data-item=\"5\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.keyboardHelp(event)\"><kbd>?</kbd> Keyboard Help</a></li>\n</ul>"}],"openButton":true},
+'multiplex': {"secret":null,"id":"e275d38b6fffc924912a9d5c06e22fd55c1eaf26da054006ddf496816f5968b3","url":"https://multiplex.up.railway.app/"},
 'smaller': false,
  
         // Display controls in the bottom right corner
@@ -541,7 +593,7 @@ Iyed Ghedamsi
         plugins: [QuartoLineHighlight, PdfExport, RevealMenu, QuartoSupport,
 
           RevealMath,
-          RevealNotes,
+          
           RevealSearch,
           RevealZoom
         ]
