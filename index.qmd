@@ -23,6 +23,25 @@ title-slide-attributes:
 library(idem)
 library(gt)
 library(ggplot2)
+library(knitr)
+
+knitr::opts_chunk$set(
+  execute = TRUE,
+  echo = TRUE,
+  message = FALSE,
+  warning = FALSE
+)
+
+knit_print.xlsform <- function(x, ...) { # nolint: object_name_linter.
+  out <- withr::with_options(
+    list(cli.num_colors = 256),
+    cli::cli_fmt({
+      idem:::print.xlsform(x)
+    })
+  )
+  html <- paste(fansi::sgr_to_html(out, classes = FALSE), collapse = "\n")
+  knitr::asis_output(paste0("<pre>", html, "</pre>"))
+}
 ```
 
 ## {idem} ?
@@ -150,7 +169,7 @@ using `r packageVersion("idem")[1]`
 
 ::: fragment
 ```{r}
-#| echo: t
+#| echo: true
 
 library(idem)
 
@@ -162,4 +181,48 @@ dev <- msna_template_required
 issues <- validate_xlsform(target = target, dev = dev)
 issues
 ```
+:::
+
+## Reading your local xlsform
+
+```{r}
+form_path <- system.file("extdata/form.xlsx", package = "idem")
+read_xlsform(form_path)
+```
+
+## Performing checks (1/4)
+
+## Validating question names: `validate_question_names()`
+
+::: columns
+
+
+::::: {.column width="25%"}
+::::::: fragment
+We explore how this check handles having extra questions in the `dev` for
+:::::::
+:::::
+
+::::: {.column width="75%"}
+
+::::::: fragment
+```{r}
+target <- msna_template_required
+# Extra question
+dev_extra_q <- target$survey[1L, ]
+dev_extra_q$name <- "dev_only_question"
+# Build xlsform
+dev_with_extra_q <- xlsform(
+  survey  = rbind(target$survey, dev_extra_q),
+  choices = target$choices
+)
+```
+:::::::
+
+::::::: fragment
+```{r}
+validate_question_names(target, dev_with_extra_q)
+```
+:::::::
+:::::
 :::

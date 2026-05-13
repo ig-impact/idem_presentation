@@ -5,3 +5,4 @@ format:
   revealjs:
     incremental: true
     css: assets/css/custom.css
+    multiplex: true
